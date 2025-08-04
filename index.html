@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$TROLLKING</title>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: 'Black Ops One', cursive;
+    }
+    .title-box {
+      font-size: 2rem;
+      text-align: center;
+      margin: 40px auto 10px;
+      color: #fff200;
+      text-shadow: 3px 3px 0 #000, 0 0 15px #ff0000, 0 0 25px #fff200;
+    }
+    .contract-box {
+      max-width: 500px;
+      margin: 10px auto;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid yellow;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: yellow;
+      color: black;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="title-box">$TROLLKING</div>
+
+  <div class="contract-box">
+    CONTRACT ADDRESS:<br />
+    <span id="contract">Loading...</span>
+  </div>
+
+  <div class="buttons">
+    <a id="twitter" class="btn" href="#" target="_blank">Twitter</a>
+    <a id="pump" class="btn" href="#" target="_blank">Pump.fun</a>
+    <a id="dex" class="btn" href="#" target="_blank">Dexscreener</a>
+  </div>
+
+  <script>
+    const sheetID = "1AYz4hxExAdtrgKchIDSK88_p_-S7FxT0XzXVQd3aasw";
+    const sheetURL = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
+
+    fetch(sheetURL)
+      .then(res => res.text())
+      .then(data => {
+        const json = JSON.parse(data.substr(47).slice(0, -2));
+        const row = json.table.rows[0].c;
+
+        const contract = row[0]?.v || "Not found";
+        const twitter = row[1]?.v || "#";
+        const pump = row[2]?.v || "#";
+        const dex = row[3]?.v || "#";
+
+        document.getElementById("contract").innerText = contract;
+        document.getElementById("twitter").href = twitter;
+        document.getElementById("pump").href = pump;
+        document.getElementById("dex").href = dex;
+      })
+      .catch(err => {
+        document.getElementById("contract").innerText = "Error loading data from Google Sheet.";
+        console.error("Sheet fetch error:", err);
+      });
+  </script>
+</body>
+</html>
