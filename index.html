@@ -46,14 +46,8 @@ body{
 }
 
 @keyframes rise{
-  from{
-    transform:translateY(0);
-    opacity:0.2;
-  }
-  to{
-    transform:translateY(-130vh);
-    opacity:1;
-  }
+  from{transform:translateY(0);opacity:0.2;}
+  to{transform:translateY(-130vh);opacity:1;}
 }
 
 /* ===== CONTENT ===== */
@@ -154,7 +148,6 @@ ul li{margin:9px 0;color:#ccc;}
 
 <body>
 
-<!-- CANDLE BG -->
 <div class="bg-holder" id="bg"></div>
 
 <div class="container">
@@ -167,15 +160,16 @@ ul li{margin:9px 0;color:#ccc;}
   <div class="tagline">Don’t Exit. Gains Every Night.</div>
   <div class="subline">Built for Night Traders • No Panic • No Exit</div>
 
+  <!-- 🔥 CHANGE ONLY THIS ADDRESS -->
   <div class="contract-box">
     <span id="contract">4A2gZAuwfWTxDxKazHVVPK125gQMcRc6k4pN7zy8pump</span>
     <button class="copy-btn" onclick="copyContract()">COPY</button>
   </div>
 
-  <button class="buy-btn">BUY NOW</button>
+  <button class="buy-btn" id="buyBtn">BUY NOW</button>
 
   <div class="chart-box">
-    <iframe src="https://dexscreener.com/solana/PASTE_CONTRACT_ADDRESS_HERE?embed=1&theme=dark"></iframe>
+    <iframe id="dexChart" loading="lazy"></iframe>
   </div>
 
   <div class="section">
@@ -193,53 +187,39 @@ ul li{margin:9px 0;color:#ccc;}
 </div>
 
 <script>
-/* CREATE CANDLES */
+/* ===== CANDLES ===== */
 const bg=document.getElementById("bg");
-const candleCount=160;
-
-for(let i=0;i<candleCount;i++){
+for(let i=0;i<160;i++){
   const c=document.createElement("div");
   c.className="candle";
   c.style.left=Math.random()*100+"vw";
   c.style.height=(12+Math.random()*22)+"px";
   c.style.animationDuration=(6+Math.random()*10)+"s";
   c.style.animationDelay=Math.random()*10+"s";
-
   const wick=document.createElement("div");
   wick.className="wick";
   c.appendChild(wick);
-
   bg.appendChild(c);
 }
 
-/* COPY */
-function copyContract(){
- navigator.clipboard.writeText(
-  document.getElementById("contract").innerText
- );
- alert("Contract Copied");
-}
-</script>
-<script>
-const pairAddress = document.getElementById("contract").innerText.trim();
+/* ===== AUTO CA MAGIC ===== */
+const pair = document.getElementById("contract").innerText.trim();
 
-/* BUY NOW → Dexscreener */
-document.getElementById("buyBtn").onclick = () => {
-  window.open(
-    `https://dexscreener.com/solana/${pairAddress}`,
-    "_blank"
-  );
+/* BUY */
+document.getElementById("buyBtn").onclick = ()=>{
+  window.open(`https://dexscreener.com/solana/${pair}`,"_blank");
 };
 
-/* IFRAME AUTO LOAD */
+/* CHART */
 document.getElementById("dexChart").src =
-  `https://dexscreener.com/solana/${pairAddress}?embed=1&theme=dark&trades=0&info=0`;
+  `https://dexscreener.com/solana/${pair}?embed=1&theme=dark&trades=0&info=0`;
 
 /* COPY */
 function copyContract(){
-  navigator.clipboard.writeText(pairAddress);
+  navigator.clipboard.writeText(pair);
   alert("Contract Copied");
 }
 </script>
+
 </body>
-  </html>
+</html>
