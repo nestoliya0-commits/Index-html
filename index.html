@@ -220,6 +220,26 @@ function copyContract(){
  alert("Contract Copied");
 }
 </script>
+<script>
+const pairAddress = document.getElementById("contract").innerText.trim();
 
+/* BUY NOW → Dexscreener */
+document.getElementById("buyBtn").onclick = () => {
+  window.open(
+    `https://dexscreener.com/solana/${pairAddress}`,
+    "_blank"
+  );
+};
+
+/* IFRAME AUTO LOAD */
+document.getElementById("dexChart").src =
+  `https://dexscreener.com/solana/${pairAddress}?embed=1&theme=dark&trades=0&info=0`;
+
+/* COPY */
+function copyContract(){
+  navigator.clipboard.writeText(pairAddress);
+  alert("Contract Copied");
+}
+</script>
 </body>
   </html>
