@@ -1,91 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>$TROLLKING</title>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      background: black;
-      color: white;
-      font-family: 'Black Ops One', cursive;
-    }
-    .title-box {
-      font-size: 2rem;
-      text-align: center;
-      margin: 40px auto 10px;
-      color: #fff200;
-      text-shadow: 3px 3px 0 #000, 0 0 15px #ff0000, 0 0 25px #fff200;
-    }
-    .contract-box {
-      max-width: 500px;
-      margin: 10px auto;
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 1px solid yellow;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 15px;
-      flex-wrap: wrap;
-    }
-    .btn {
-      padding: 10px 20px;
-      background: yellow;
-      color: black;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      text-decoration: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>NEON CANDLE COIN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:black;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* ===== BACKGROUND CANDLES ===== */
+.candle-bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  overflow:hidden;
+}
+
+.candle{
+  position:absolute;
+  bottom:-60px;
+  width:8px;
+  height:30px;
+  background:#00ff6a;
+  box-shadow:0 0 15px #00ff6a, 0 0 30px #00ff6a;
+  animation: rise linear infinite;
+  border-radius:2px;
+}
+
+.candle::after{
+  content:'';
+  position:absolute;
+  top:-6px;
+  left:0;
+  width:8px;
+  height:6px;
+  background:#00ff6a;
+  border-radius:2px;
+}
+
+@keyframes rise{
+  from{
+    transform:translateY(0);
+    opacity:1;
+  }
+  to{
+    transform:translateY(-120vh);
+    opacity:0;
+  }
+}
+
+/* ===== MAIN CONTENT ===== */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:80px 20px;
+  text-align:center;
+}
+
+h1{
+  font-size:3.2rem;
+  color:#00ff6a;
+  text-shadow:0 0 20px #00ff6a;
+}
+
+.tagline{
+  margin-top:10px;
+  font-size:1.2rem;
+  opacity:0.85;
+}
+
+.btn{
+  margin-top:35px;
+  display:inline-block;
+  padding:15px 40px;
+  font-size:1.1rem;
+  font-weight:bold;
+  color:black;
+  background:#00ff6a;
+  border-radius:50px;
+  text-decoration:none;
+  box-shadow:0 0 20px #00ff6a;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ===== DIAMOND SHINE ===== */
+.btn::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-60%;
+  width:40%;
+  height:100%;
+  background:rgba(255,255,255,0.7);
+  transform:skewX(-25deg);
+  animation: shine 2.5s infinite;
+}
+
+@keyframes shine{
+  0%{ left:-60%; }
+  100%{ left:140%; }
+}
+
+/* ===== SECTIONS ===== */
+.section{
+  margin-top:80px;
+  background:rgba(0,0,0,0.6);
+  padding:40px;
+  border-radius:20px;
+  border:1px solid #00ff6a55;
+  box-shadow:0 0 30px #00ff6a33;
+}
+
+.section h2{
+  color:#00ff6a;
+  margin-bottom:20px;
+}
+
+.contract-box{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.contract{
+  padding:10px 15px;
+  background:black;
+  border:1px solid #00ff6a;
+  border-radius:8px;
+  font-size:0.9rem;
+}
+
+.copy-btn{
+  padding:10px 15px;
+  background:#00ff6a;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  margin-top:80px;
+  opacity:0.6;
+  font-size:0.9rem;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:600px){
+  h1{ font-size:2.4rem; }
+}
+</style>
 </head>
+
 <body>
-  <div class="title-box">$TROLLKING</div>
 
-  <div class="contract-box">
-    CONTRACT ADDRESS:<br />
-    <span id="contract">Loading...</span>
+<!-- BACKGROUND -->
+<div class="candle-bg" id="candleBg"></div>
+
+<!-- CONTENT -->
+<div class="container">
+  <h1>NEON CANDLE</h1>
+  <div class="tagline">Green candles only • No red allowed 🚀</div>
+
+  <a href="#" class="btn">BUY NOW</a>
+
+  <div class="section">
+    <h2>ABOUT</h2>
+    <p>
+      Neon Candle is a meme-powered crypto symbolizing nonstop green candles.
+      No fear. No dumps. Just vibes.
+    </p>
   </div>
 
-  <div class="buttons">
-    <a id="twitter" class="btn" href="#" target="_blank">Twitter</a>
-    <a id="pump" class="btn" href="#" target="_blank">Pump.fun</a>
-    <a id="dex" class="btn" href="#" target="_blank">Dexscreener</a>
+  <div class="section">
+    <h2>CONTRACT ADDRESS</h2>
+    <div class="contract-box">
+      <div class="contract" id="contractAddress">
+        SOONXXXXXXXXXXXXXXXX
+      </div>
+      <button class="copy-btn" onclick="copyCA()">COPY</button>
+    </div>
   </div>
 
-  <script>
-    const sheetID = "1AYz4hxExAdtrgKchIDSK88_p_-S7FxT0XzXVQd3aasw";
-    const sheetURL = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
+  <div class="section">
+    <h2>ROADMAP</h2>
+    <p>
+      Phase 1: Launch 🚀<br>
+      Phase 2: Meme domination 😈<br>
+      Phase 3: Green candle legacy 🔥
+    </p>
+  </div>
 
-    fetch(sheetURL)
-      .then(res => res.text())
-      .then(data => {
-        const json = JSON.parse(data.substr(47).slice(0, -2));
-        const row = json.table.rows[0].c;
+  <footer>
+    © 2026 Neon Candle • Community Driven
+  </footer>
+</div>
 
-        const contract = row[0]?.v || "Not found";
-        const twitter = row[1]?.v || "#";
-        const pump = row[2]?.v || "#";
-        const dex = row[3]?.v || "#";
+<script>
+/* CREATE RANDOM CANDLES */
+const bg = document.getElementById("candleBg");
 
-        document.getElementById("contract").innerText = contract;
-        document.getElementById("twitter").href = twitter;
-        document.getElementById("pump").href = pump;
-        document.getElementById("dex").href = dex;
-      })
-      .catch(err => {
-        document.getElementById("contract").innerText = "Error loading data from Google Sheet.";
-        console.error("Sheet fetch error:", err);
-      });
-  </script>
+for(let i=0;i<120;i++){
+  const c = document.createElement("div");
+  c.className = "candle";
+  c.style.left = Math.random()*100 + "%";
+  c.style.animationDuration = (6 + Math.random()*8) + "s";
+  c.style.opacity = Math.random();
+  bg.appendChild(c);
+}
+
+/* COPY CONTRACT */
+function copyCA(){
+  const text = document.getElementById("contractAddress").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Contract Address Copied!");
+}
+</script>
+
 </body>
 </html>
