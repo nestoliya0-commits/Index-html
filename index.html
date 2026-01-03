@@ -2,30 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>NEON CANDLE COIN</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D.E.G.E.N — Don’t Exit, Gains Every Night</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 body{
-  background:black;
-  color:white;
+  margin:0;
+  background:#05060b;
+  color:#fff;
+  font-family:'Black Ops One',cursive;
   overflow-x:hidden;
 }
 
-/* ===== BACKGROUND CANDLES ===== */
-.candle-bg{
+/* ===== CANDLE BACKGROUND ===== */
+.bg-holder{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  inset:0;
   z-index:-1;
   overflow:hidden;
 }
@@ -33,207 +27,199 @@ body{
 .candle{
   position:absolute;
   bottom:-60px;
-  width:8px;
-  height:30px;
-  background:#00ff6a;
-  box-shadow:0 0 15px #00ff6a, 0 0 30px #00ff6a;
-  animation: rise linear infinite;
-  border-radius:2px;
+  width:6px;
+  border-radius:3px;
+  background:#00ff88;
+  box-shadow:0 0 8px #00ff88;
+  animation:rise linear infinite;
+  opacity:0.8;
 }
 
-.candle::after{
-  content:'';
+.wick{
   position:absolute;
   top:-6px;
-  left:0;
-  width:8px;
+  left:50%;
+  width:2px;
   height:6px;
-  background:#00ff6a;
-  border-radius:2px;
+  background:#caffea;
+  transform:translateX(-50%);
 }
 
 @keyframes rise{
   from{
     transform:translateY(0);
-    opacity:1;
+    opacity:0.2;
   }
   to{
-    transform:translateY(-120vh);
-    opacity:0;
+    transform:translateY(-130vh);
+    opacity:1;
   }
 }
 
-/* ===== MAIN CONTENT ===== */
+/* ===== CONTENT ===== */
 .container{
-  max-width:1000px;
+  max-width:1200px;
   margin:auto;
-  padding:80px 20px;
+  padding:30px;
   text-align:center;
+}
+
+.hero img{
+  width:100%;
+  max-width:950px;
+  border-radius:25px;
+  box-shadow:0 0 45px #00ff88;
 }
 
 h1{
   font-size:3.2rem;
-  color:#00ff6a;
-  text-shadow:0 0 20px #00ff6a;
+  color:#00ff88;
+  text-shadow:0 0 25px #00ff88;
+  margin:20px 0 5px;
 }
 
-.tagline{
-  margin-top:10px;
-  font-size:1.2rem;
-  opacity:0.85;
-}
-
-.btn{
-  margin-top:35px;
-  display:inline-block;
-  padding:15px 40px;
-  font-size:1.1rem;
-  font-weight:bold;
-  color:black;
-  background:#00ff6a;
-  border-radius:50px;
-  text-decoration:none;
-  box-shadow:0 0 20px #00ff6a;
-  position:relative;
-  overflow:hidden;
-}
-
-/* ===== DIAMOND SHINE ===== */
-.btn::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:-60%;
-  width:40%;
-  height:100%;
-  background:rgba(255,255,255,0.7);
-  transform:skewX(-25deg);
-  animation: shine 2.5s infinite;
-}
-
-@keyframes shine{
-  0%{ left:-60%; }
-  100%{ left:140%; }
-}
-
-/* ===== SECTIONS ===== */
-.section{
-  margin-top:80px;
-  background:rgba(0,0,0,0.6);
-  padding:40px;
-  border-radius:20px;
-  border:1px solid #00ff6a55;
-  box-shadow:0 0 30px #00ff6a33;
-}
-
-.section h2{
-  color:#00ff6a;
-  margin-bottom:20px;
-}
+.tagline{color:#ccc;font-size:1.2rem;}
+.subline{color:#8affc7;font-size:0.9rem;}
 
 .contract-box{
+  margin:25px auto;
+  max-width:520px;
+  padding:12px;
+  border:1px solid #00ff88;
+  border-radius:12px;
+  background:rgba(255,255,255,0.06);
   display:flex;
   justify-content:center;
   align-items:center;
   gap:10px;
-  flex-wrap:wrap;
-}
-
-.contract{
-  padding:10px 15px;
-  background:black;
-  border:1px solid #00ff6a;
-  border-radius:8px;
-  font-size:0.9rem;
+  font-size:0.8rem;
+  word-break:break-all;
 }
 
 .copy-btn{
-  padding:10px 15px;
-  background:#00ff6a;
+  padding:6px 10px;
   border:none;
   border-radius:8px;
   cursor:pointer;
+  background:#00ff88;
+  color:#000;
   font-weight:bold;
 }
 
-/* ===== FOOTER ===== */
-footer{
-  margin-top:80px;
-  opacity:0.6;
-  font-size:0.9rem;
+.buy-btn{
+  margin:30px auto;
+  padding:16px 45px;
+  font-size:1.5rem;
+  border:none;
+  border-radius:16px;
+  cursor:pointer;
+  color:#000;
+  background:linear-gradient(120deg,#00ff88,#ffffff,#00ff88);
+  background-size:200% 200%;
+  animation:shine 2s linear infinite;
 }
 
-/* ===== MOBILE ===== */
-@media(max-width:600px){
-  h1{ font-size:2.4rem; }
+@keyframes shine{
+  0%{background-position:0%}
+  100%{background-position:200%}
+}
+
+.chart-box{
+  margin:45px auto;
+  max-width:1050px;
+  border:2px solid #00ff88;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 0 35px rgba(0,255,136,0.35);
+}
+
+iframe{
+  width:100%;
+  height:540px;
+  border:none;
+}
+
+.section{margin:60px 0;}
+.section h2{color:#00ff88;margin-bottom:15px;}
+ul{list-style:none;padding:0;}
+ul li{margin:9px 0;color:#ccc;}
+
+.footer{
+  margin:60px 0 20px;
+  color:#777;
+  font-size:0.85rem;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
-<div class="candle-bg" id="candleBg"></div>
+<!-- CANDLE BG -->
+<div class="bg-holder" id="bg"></div>
 
-<!-- CONTENT -->
 <div class="container">
-  <h1>NEON CANDLE</h1>
-  <div class="tagline">Green candles only • No red allowed 🚀</div>
 
-  <a href="#" class="btn">BUY NOW</a>
+  <div class="hero">
+    <img src="https://i.imgur.com/YOUR_DEGEN_IMAGE.jpg">
+  </div>
 
-  <div class="section">
-    <h2>ABOUT</h2>
-    <p>
-      Neon Candle is a meme-powered crypto symbolizing nonstop green candles.
-      No fear. No dumps. Just vibes.
-    </p>
+  <h1>D.E.G.E.N</h1>
+  <div class="tagline">Don’t Exit. Gains Every Night.</div>
+  <div class="subline">Built for Night Traders • No Panic • No Exit</div>
+
+  <div class="contract-box">
+    <span id="contract">PASTE_CONTRACT_ADDRESS_HERE</span>
+    <button class="copy-btn" onclick="copyContract()">COPY</button>
+  </div>
+
+  <button class="buy-btn">APES IN</button>
+
+  <div class="chart-box">
+    <iframe src="https://dexscreener.com/solana/PASTE_CONTRACT_ADDRESS_HERE?embed=1&theme=dark"></iframe>
   </div>
 
   <div class="section">
-    <h2>CONTRACT ADDRESS</h2>
-    <div class="contract-box">
-      <div class="contract" id="contractAddress">
-        SOONXXXXXXXXXXXXXXXX
-      </div>
-      <button class="copy-btn" onclick="copyCA()">COPY</button>
-    </div>
+    <h2>DEGEN RULES</h2>
+    <ul>
+      <li>No Exit</li>
+      <li>No Panic</li>
+      <li>Trust the Candle</li>
+      <li>Sleep Is Optional</li>
+    </ul>
   </div>
 
-  <div class="section">
-    <h2>ROADMAP</h2>
-    <p>
-      Phase 1: Launch 🚀<br>
-      Phase 2: Meme domination 😈<br>
-      Phase 3: Green candle legacy 🔥
-    </p>
-  </div>
+  <div class="footer">Built for Degens • Night Never Ends</div>
 
-  <footer>
-    © 2026 Neon Candle • Community Driven
-  </footer>
 </div>
 
 <script>
-/* CREATE RANDOM CANDLES */
-const bg = document.getElementById("candleBg");
+/* CREATE CANDLES */
+const bg=document.getElementById("bg");
+const candleCount=160;
 
-for(let i=0;i<120;i++){
-  const c = document.createElement("div");
-  c.className = "candle";
-  c.style.left = Math.random()*100 + "%";
-  c.style.animationDuration = (6 + Math.random()*8) + "s";
-  c.style.opacity = Math.random();
+for(let i=0;i<candleCount;i++){
+  const c=document.createElement("div");
+  c.className="candle";
+  c.style.left=Math.random()*100+"vw";
+  c.style.height=(12+Math.random()*22)+"px";
+  c.style.animationDuration=(6+Math.random()*10)+"s";
+  c.style.animationDelay=Math.random()*10+"s";
+
+  const wick=document.createElement("div");
+  wick.className="wick";
+  c.appendChild(wick);
+
   bg.appendChild(c);
 }
 
-/* COPY CONTRACT */
-function copyCA(){
-  const text = document.getElementById("contractAddress").innerText;
-  navigator.clipboard.writeText(text);
-  alert("Contract Address Copied!");
+/* COPY */
+function copyContract(){
+ navigator.clipboard.writeText(
+  document.getElementById("contract").innerText
+ );
+ alert("Contract Copied");
 }
 </script>
 
 </body>
-</html>
+  </html>
